@@ -1,0 +1,13 @@
+==============================================================
+Guild: Totally not a server with a flag in it
+Channel: Text / there-is-no-flag-in-here-move-along
+Topic: Don't look at this channel, it has no flags!
+==============================================================
+
+[04-May-21 04:34 AM] DCTF-ChallUser#4374
+dctf{7h3_R0b0t_Upr151ng_15_NEAR!}
+
+
+==============================================================
+Exported 1 message(s)
+==============================================================
