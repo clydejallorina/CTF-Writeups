@@ -22,7 +22,7 @@ Every Discord bot that interacts with the API has to send its API key. There are
 
 ### Figuring out the language and library
 
-Before putting it into Ghidra and analyzing the binary, let's just look around the strings in the binary. By running `strings discordbot | grep discord`, we can take a look at what strings inside could be referring to Discord. At the time, I wasn't exactly hoping to find anything using this command, but it did give out something very interesting.
+Before doing anything that could be considered overkill, let's first take a good look around the strings in the binary. By running `strings discordbot | grep discord`, we can take a look at what strings inside could be referring to Discord. At the time, I wasn't exactly hoping to find anything using this command, but it did give out something very interesting.
 
 ```
 ...
