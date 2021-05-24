@@ -86,7 +86,7 @@ This is our API key, and we shall use it to finally get the flag!
 
 ## Exfiltrating the flag
 
-Now that we have the API key that the bot uses to communicate with Discord, we can now spoof ourselves as the bot. We can write our own bot that reads every message from every channel to get the flag, but in this case I got pretty lazy and decided to use [DiscordChatExporter](https://github.com/Tyrrrz/DiscordChatExporter) to simply pull the messages out of every channel that the bot can see.
+Now that we have the API key that the bot uses to communicate with Discord, we can now spoof ourselves as the bot. We can write our own bot that reads every message from every channel to get the flag, but in this case someone has already made a great tool! We can use [DiscordChatExporter](https://github.com/Tyrrrz/DiscordChatExporter) to simply pull the messages out of every channel that the bot can see.
 
 Upon exporting the messages for the server "`Totally not a server with a flag in it`" in the text channel "`#there-is-no-flag-in-here-move-along`", we can finally read the flag:
 
