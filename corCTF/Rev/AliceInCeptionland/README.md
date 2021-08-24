@@ -28,7 +28,7 @@ Mono or .NET assemblies are very interesting in reverse-engineering as more ofte
 
 ### Opening the file
 
-> Warning: This file may trigger Windows Defender due to some mechanisms inside the program that will be explained later. Rest assured that this isn't malware designed to mine the hip and new cryptocurrency corCoin. If you cannot open this file due to Windows saying that it's a virus, add the program to Windows Defender's exceptions or disable Windows Defender temporarily.
+> Warning: This file may trigger Windows Defender due to some mechanisms inside the program that will be explained later. Rest assured that this ***isn't*** malware designed to mine the hip and new cryptocurrency corCoin. If you cannot open this file due to Windows saying that it's a virus, add the program to Windows Defender's exceptions or disable Windows Defender temporarily.
 
 Now that we know what type of file it is, let's first try running the program. As was mentioned earlier, the program must be run in Windows. We will then be greeted by the following game (and a really loud piece of music, so you might want to lower your volume).
 
@@ -67,10 +67,8 @@ using AliceInCeptionland.Properties;
 
 namespace AliceInCeptionland
 {
-    // Token: 0x02000006 RID: 6
     internal static class Program
     {
-        // Token: 0x06000021 RID: 33 RVA: 0x00003A7C File Offset: 0x00001C7C
         [STAThread]
         private static void Main()
         {
@@ -375,7 +373,9 @@ After passing the password check, we get two buttons asking us to either follow 
 
 ![DeepDream Prompt](alice7.png)
 
-Remember that from earlier, this is now out of the `BaseGame`'s scope and this is now involving the encrypted binary and the `DeepDream` class. To save us the headache later, let's grab the assembly from memory now.
+Remember that from earlier, this is now out of the `BaseGame`'s scope and this is now involving the encrypted binary and the `DeepDream` class. This is a reason for Windows Defender marking the EXE as a virus. The EXE decrypts an assembly that it later  Some malware use this method in order to mask themselves from antivirus scanners.
+
+To save us the headache later, let's grab the assembly from memory.
 
 ```cs
 // Program.Main()
@@ -502,7 +502,7 @@ internal static string <Encode>g__fm|3_3(char c)
     });
 }
 
-// other functions truncated from this writeup, view the dll dnSpy for full decompile
+// other functions truncated from this writeup, view the dll in dnSpy for full decompile
 ```
 
 As can be seen in this snippet, there's a lot to unpack but some we can just ignore. For one, the `CheckRemoteDebuggerPresent` is simply an anti-debugging measure to throw off anyone who thinks of skipping past this portion. If we are running this without any debuggers attached, `flag` should stay false and never reverse the output.
