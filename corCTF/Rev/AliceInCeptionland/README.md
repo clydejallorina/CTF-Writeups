@@ -24,7 +24,7 @@ Already this is telling us a lot of things about the binary:
 
 3. It's a Windows .EXE file (meaning it has to be opened under a Windows system)
 
-Mono or .NET assemblies are very interesting in reverse-engineering as more often than not, they decompile easily to their original C# code (or at least close enough to it). We can take a good look at these with a .NET assembly browser like [ILSpy](https://github.com/icsharpcode/ILSpy) or [dnSpy](https://github.com/dnSpy/dnSpy). In this writeup, I will be using dnSpy. (There is no reason to this, I just think it's neat')
+Mono or .NET assemblies are very interesting in reverse-engineering as more often than not, they decompile easily to their original C# code (or at least close enough to it). We can take a good look at these with a .NET assembly browser like [ILSpy](https://github.com/icsharpcode/ILSpy) or [dnSpy](https://github.com/dnSpy/dnSpy). In this writeup, I will be using dnSpy. (There is no reason to this, I just think it's neat.)
 
 ### Opening the file
 
