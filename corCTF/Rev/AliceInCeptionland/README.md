@@ -32,11 +32,11 @@ Mono or .NET assemblies are very interesting in reverse-engineering as more ofte
 
 Now that we know what type of file it is, let's first try running the program. As was mentioned earlier, the program must be run in Windows. We will then be greeted by the following game (and a really loud piece of music, so you might want to lower your volume).
 
-![First run](alice1.png)
+![First run](assets/alice1.png)
 
 Pressing the arrow keys, we can move Alice around the map. Alice does not seem to be able to get onto the bottom-right question mark, but we can touch the upper question mark. Upon touching this question mark, the game window disappears and gets replaced by the following window.
 
-![The Cheshire Cat](alice2.png)
+![The Cheshire Cat](assets/alice2.png)
 
 This window appears to be some sort of password check. Typing random characters into the textbox and then clicking the button does nothing. Maybe if we figure out the right password, it would do something? Without a valid password, we can't really do much from here. The next move shall now be investigating the binary inside dnSpy.
 
@@ -46,7 +46,7 @@ To open the file in dnSpy, dragging and dropping the file into dnSpy works.
 
 We will then be greeted by the following text.
 
-![dnSpy opening the file](alice3.png)
+![dnSpy opening the file](assets/alice3.png)
 
 From what dnSpy says in the comment
 
@@ -281,7 +281,7 @@ Running this code will give us the password to the Cheshire Cat prompt, which is
 
 After submitting the password to the Cheshire Cat prompt, we will be thrown back into the game world. This time, however, the bottom-right question mark is now accessible! As with the Cheshire Cat, however, it's another password prompt.
 
-![The Caterpillar Prompt](alice4.png)
+![The Caterpillar Prompt](assets/alice4.png)
 
 Well, good thing we already know where this prompt is being launched from: `AliceInCeptionland.Caterpillar`. It basically has the same drawing processes as the `CheshireCat` class, so it is very fair to assume that the password check is happening again in `Caterpillar.button1_Click`.
 
@@ -371,7 +371,7 @@ Running this, we will get the solution `\x4\xL\x1\xC\x3\x1\xS\xN\x0\xT\x4\xS\xL\
 
 After passing the password check, we get two buttons asking us to either follow Alice and save her, or a button that asks for the flag. Naturally, the second option is just a pop-up telling us to go save her, so there's really only one option from here. Clicking that button gives the following prompt.
 
-![DeepDream Prompt](alice7.png)
+![DeepDream Prompt](assets/alice7.png)
 
 Remember that from earlier, this is now out of the `BaseGame`'s scope and this is now involving the encrypted binary and the `DeepDream` class. This is a reason for Windows Defender marking the EXE as a virus. The EXE decrypts an assembly that it later  Some malware use this method in order to mask themselves from antivirus scanners.
 
@@ -423,11 +423,11 @@ private static void Main()
 
  If we attach a breakpoint during execution just after the decryption in the main program, we can pull the assembly directly from memory and dump it into a file and analyze it inside dnSpy. dnSpy lets us debug .NET assemblies and lets us place breakpoints where in the code we want to debug.
 
-![Debugging the game](alice5.png)
+![Debugging the game](assets/alice5.png)
 
 The assembly can be found in `memoryStream._buffer` and its value can be peeked at in dnSpy while debugging. From there we can grab its hex values, decode it and save it as a DLL file.
 
-![Grabbing the assembly from memory](alice6.png)
+![Grabbing the assembly from memory](assets/alice6.png)
 
 Now that we have the assembly dumped, we can take a look at where it's passed to. We need to know how the assembly is being processed right after loading, and how it's being used.
 
@@ -617,6 +617,6 @@ And just like that we get the solution to the final password check!
 
 ## The Flag
 
-![The Flag](flag.png)
+![The Flag](assets/flag.png)
 
 And finally, the flag: `corctf{4l1c3_15_1n_d33p_tr0ubl3_b3c4us3_1_d1d_n0t_s4v3_h3r!!:(}`
